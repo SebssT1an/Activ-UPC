@@ -1,0 +1,9 @@
+﻿  NoFuiALaFiesta.cpp
+C:\Users\Alumnos\source\repos\session005\NoFuiALaFiesta\NoFuiALaFiesta.cpp(14,10): warning C4996: 'kbhit': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _kbhit. See online help for details.
+  (compiling source file '/NoFuiALaFiesta.cpp')
+  
+C:\Users\Alumnos\source\repos\session005\NoFuiALaFiesta\NoFuiALaFiesta.cpp(22,5): warning C4996: '_sleep': This function or variable has been superceded by newer library or operating system functionality. Consider using Sleep instead. See online help for details.
+  (compiling source file '/NoFuiALaFiesta.cpp')
+  
+  AssemblyInfo.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
+  NoFuiALaFiesta.vcxproj -> C:\Users\Alumnos\source\repos\session005\x64\Debug\NoFuiALaFiesta.exe

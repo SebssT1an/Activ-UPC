@@ -1,0 +1,72 @@
+ejercicio 1
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main() {
+
+	int x = 0, n = 0;
+	do
+	{
+		cout << "Ingrese 'x': "; cin >> x;
+	} while (!(x >= 0));
+	do
+	{
+		cout << "Ingrese 'n': "; cin >> n;
+	} while (!(n >= 2));
+
+	float sum = 0;
+	for (int i = 1; i <= n; i++)
+	{
+		sum += (float)(x + i) / (float)(x + 2 * i);
+	}
+	cout << "El resultado es: " << sum;
+
+	return 0;
+}  
+
+ejercicio 2
+#include <iostream>
+#define N 10
+using namespace std;
+int main() {
+	for (int i = 0; i <= N; i++)
+	{
+		for (int j = 0; j <= N; j++)
+		{
+			if (i == j)
+			{
+				cout << "- ";
+			}
+			else
+			{
+				cout << "* ";
+			}
+		}
+		cout << "\n";
+	}
+	return 0;
+}
+
+ejercicio 3
+#include "pch.h"
+#include <iostream>
+
+using namespace System;
+using namespace std;
+
+int main()
+{
+	Console::CursorVisible = false;
+	for (int i = 0; i <= 100
+		; i++)
+	{
+		system("cls");
+		Console::SetCursorPosition(i, 5);
+		cout << "CALLA SANO";
+		_sleep(250);
+	}
+
+    return 0;
+}

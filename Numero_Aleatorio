@@ -1,0 +1,15 @@
+#include <iostream>
+#include <time.h>
+
+using namespace std;
+
+int NumeroAleat() {
+	return rand() % 40 + 1;
+	//generar numero aleatorio entre 1 y 40
+}
+int main() {
+	srand(time(NULL));
+	cout << NumeroAleat()<<endl;
+
+	return 0;
+}

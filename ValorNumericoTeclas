@@ -1,0 +1,19 @@
+#include "pch.h"
+#include <iostream>
+#include "conio.h"
+
+using namespace System;
+using namespace std;
+
+int main()
+{
+	while (true)
+	{
+		if (_kbhit()) {	//si presiono una tecla
+			char k;
+			k = _getch();	//obtener tecla
+			cout << (int)k << endl;
+		}
+	}
+    return 0;
+}

@@ -1,0 +1,53 @@
+#include <iostream>
+
+using namespace std;
+
+void Bienvenida() {	//invocacion
+	cout << "Bienvenido usuario"<<endl;	//cuerpo
+}
+int suma(int a, int b) {	//obligatorio
+	cout << "\nSumando a y b!"<<endl;
+	int c = a + b;
+	cout << "\nLa suma es " << c << endl;
+	return c;	//se ejecuta hasta aqui...
+	cout << "Finalizacion de la funcion";
+}
+int conjetura(int c=1) {	//opcional
+	if (c<5) {
+		return 2 * c;
+	}
+	return c - 1;
+}
+int factorial(int n) {
+	if (n==1)
+	{
+		return;
+	}
+	else
+	{
+		return n * factorial(n - 1);
+	}
+}
+
+int main() {
+	//llamar funcion bienvenida
+	cout << "\t"; Bienvenida();	//invocacion
+	cout << "\t"; Bienvenida();	//se puede invocar
+	cout << "\t"; Bienvenida();	//varias veces...
+	
+	//llamar funcion suma
+	int a, b;
+	cout << "\nIngrese el valor de a: "; cin >> a;
+	cout << "\nIngrese el valor de b: "; cin >> b;
+	suma(a, b);
+
+	//llamar funcion conjetura
+	cout << "\n" << conjetura();
+
+	//llamar la funcion factorial
+	cout << "\nEl factorial de 5 es " << factorial(5)<<"\n";	
+
+	return 0;
+}
+
+//en una funcion primero van los parametros obligatorios y luego los opcionales

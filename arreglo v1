@@ -1,0 +1,16 @@
+#include <iostream>
+#include <string.h>
+
+using namespace std;
+
+int main() {
+	//arreglo de 5 notas (de tipo int)
+	int notas[5] = { 20, 18, 20, 17, 10 };
+	//arreglo de 5 cursos  (de tipo string)
+	string cursos[5] = { "PC1", "PC2", "EP", "TF", "EF" };
+	notas[4] = 20;	// modificar el valor del arreglo en la posicion 4
+	for (int i = 0; i < 5; i++) {	// i toma los valores 0, 1, 2, 3, 4
+		// mostramos el curso[i] y notas [i] 
+		cout << cursos[i] << "\t : " << notas[i] << endl;
+	}
+}

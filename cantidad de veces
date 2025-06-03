@@ -1,0 +1,17 @@
+#include <iostream>
+#include <string.h>
+
+using namespace std;
+
+int main() {
+	// en base a las calificaciones C
+	// hallar el numero de veces que saco 20
+	int C[5] = { 20, 18, 17, 20, 12 };
+	int contador = 0;
+	for (int i = 0; i < 5; i++)
+	{
+		if (C[i] == 20)
+			contador++; // contador +=1
+	}
+	cout << "El 20 aparece " << contador << " veces";
+}

@@ -1,0 +1,40 @@
+#include <iostream>
+#include <string.h>
+
+using namespace std;
+
+int main() {
+	int calificaciones[3];
+	for (int i = 0; i < 3; i++)
+	{
+		cout << "Ingrese la calificacion " << i + 1 << " :"; 
+		cin >> calificaciones[i];
+	}
+	float promedio = 0;
+	for (int i = 0; i < 3; i++)
+	{
+		promedio += calificaciones[i];
+	}
+	cout << "El promedio es: " << promedio / 3 << endl;
+	int nueva_nota = 0, menor = calificaciones[0], posicion = 0;
+	if ((promedio/3) < 10)
+	{
+		cout << "Ingrese la nueva nota: "; cin >> nueva_nota;
+		//hallar el menor
+		for (int i = 0; i < 3; i++)
+		{
+			if (menor>calificaciones[i])
+			{
+				menor = calificaciones[i];
+				posicion = i;
+			}
+		}
+		calificaciones[posicion] == nueva_nota;
+	}
+	promedio = 0;
+	for (int i = 0; i < 3; i++)
+	{
+		promedio += calificaciones[i];
+	}
+	cout << "El nuevo promedio es: " << promedio / 3;
+}

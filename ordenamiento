@@ -1,0 +1,27 @@
+#include <iostream>
+#include <string.h>
+
+using namespace std;
+
+int main() {
+	float calificaciones[5] = {};
+
+	for (int i = 0; i < 5; i++) {
+		cout << "Ingrese la calificacion " << i + 1 << ": ";
+		cin >> calificaciones[i];
+	}
+	float promedio = 0;
+	for (int i = 0; i < 5; i++) {
+		promedio += calificaciones[i];
+	}
+	cout << "Su promedio es: " << promedio / 5 << endl;
+	//hallar el mayor
+	int mayor = calificaciones[0];
+	//asumiendo que el mayor es el primer elemento
+	for (int i = 0; i < 5; i++) {	//recorremos el arreglo
+		if (mayor < calificaciones[i]) {	//verificar si el mayor < algo
+			mayor = calificaciones[i];	//actualizamos si se cumple
+		}
+	}
+	cout << "Su nota mayor es: " << mayor;
+}

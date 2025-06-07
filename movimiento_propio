@@ -2,10 +2,10 @@
 #include <iostream>
 #include "conio.h"
 
-#define ABAJO 80
-#define ARRIBA 72
-#define IZQUIERDA 75
-#define DERECHA 77
+#define ABAJO 115
+#define ARRIBA 119
+#define IZQUIERDA 97
+#define DERECHA 100
 
 using namespace System;
 using namespace std;

@@ -1,0 +1,88 @@
+#include <iostream>
+#include <string.h>
+
+#define FILAS 5
+#define COLUMNAS 6
+
+using namespace std;
+
+void generar(int A[FILAS][COLUMNAS]) { // genera el arreglo 2D
+	for (int i = 0; i < FILAS; i++) {	// RECORRO FILAS
+		for (int j = 0; j < COLUMNAS; j++) {	// COLUMNAS
+			A[i][j] = 1 + rand() % 9;	// ASIGNAR UN VALOR
+		}
+	}
+	}
+
+void imprimir(int A[FILAS][COLUMNAS]) { //imprime el arreglo 
+	for (int i = 0; i < FILAS; i++) {	// RECORRO FILAS
+		for (int j = 0; j < COLUMNAS; j++) {	// COLUMNAS
+			A[i][j] = 1 + rand() % 9;	// ASIGNAR UN VALOR
+			cout << A[i][j] << " ";	// IMPRIMIR EL VALOR
+		}
+		cout << endl;	// SALTO DE LINEA
+	}
+}
+
+void buscar_veces(int A[FILAS][COLUMNAS], int valor) { // busca la cantidad de veces que se repite "valor"
+	int contador=0;
+	for (int i = 0; i < FILAS; i++)
+	{
+		for (int j = 0; j < COLUMNAS; j++)
+		{
+			if (A[i][j]==valor)
+			{
+				contador++;
+			}
+		}
+	}
+	cout << "se repite " << contador << " veces" << endl;
+}
+
+void imprimir2(int A[FILAS][COLUMNAS], int valor) { // imprime buscaminas XD
+	int contador = 0;
+	for (int i = 0; i < FILAS; i++)
+	{
+		for (int j = 0; j < COLUMNAS; j++)
+		{
+			if (A[i][j] == valor)
+			{
+				cout << "# ";
+			}
+			else
+			{
+				cout << "- ";
+			}
+		}
+		cout << endl;
+	}
+}
+
+int mayor(int A[FILAS][COLUMNAS]) { // busca el mayor valor
+	int mayor= A[0][0];
+	for (int i = 0; i < FILAS; i++)
+	{
+		for (int j = 0; j < COLUMNAS; j++) 
+		{
+			if (mayor < A[i][j])
+			{
+				mayor = A[i][j];
+			}
+		}
+	}
+	cout << endl << "El mayor valor es " << mayor << endl;
+	return mayor;
+}
+
+int main() {
+	srand(time(NULL));	// GENERAR UNA SEMILLA
+	int M[FILAS][COLUMNAS];	// ESTABLECER UN ARREGLO 2D
+	int valor;
+	generar(M);
+	imprimir(M);
+	cout << "Ingrese el valor a buscar: ";
+	cin >> valor; cout << endl;
+	buscar_veces(M, valor); cout << endl;
+	imprimir2(M, valor);
+	mayor(M);
+}

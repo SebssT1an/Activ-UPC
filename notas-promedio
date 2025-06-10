@@ -1,0 +1,39 @@
+#include <iostream>
+#define COLUMNAS 2
+#define FILAS 2
+using namespace std;
+
+int main()
+{
+	// ingresar notas
+	float notas[FILAS][COLUMNAS];
+	for (int i = 0; i < FILAS; i++)
+	{
+		for (int j = 0; j < COLUMNAS; j++)
+		{
+			cout << "Ingrese la nota de la seccion ";
+			cout << "en el curso " << j + 1 << ": ";
+			cin >> notas[i][j];
+		}
+	}
+	// mostrar notas
+	for (int i = 0; i < FILAS; i++)
+	{
+		for (int j = 0; j < COLUMNAS; j++)
+		{
+			cout << notas[i][j] << " ";
+		}
+		cout << endl;
+	}
+	// promedio
+	for (int i = 0; i < FILAS; i++)
+	{
+		float promedio = 0;
+		for (int j = 0; j < COLUMNAS; j++)
+		{
+			promedio += notas[i][j];
+		}
+		cout << "El promedio es " << promedio / FILAS;
+		cout << endl;
+	}
+}

@@ -1,0 +1,260 @@
+act_1
+#include <iostream>
+#include <string.h>
+
+using namespace std;
+
+struct persona // COSTOSO A NIVEL DE MEMORIA
+{
+	string nombre;
+	string apellido;
+	int edad;
+};
+
+struct // SOLO PUEDE HABER UN OBJETO CON ESTA FORMA
+{
+	string nombre;
+	string apellido;
+	int edad;
+} p; // EL OBJETO ES 'p' // OPTIMO A NIVEL DE MEMORIA
+
+int main() 
+{
+	persona p; // 'p' ES UN OBJETO DE LA ESTRUCTURA PERSONA
+	cout << "Ingrese el nombre: "; cin >> p.nombre;
+	cout << "Ingrese el apellido: "; cin >> p.apellido;
+	cout << "Ingrese la edad: "; cin >> p.edad;
+	cout << "Mucho gusto " << p.nombre << " " << p.apellido << endl;
+}
+
+act_2
+#include <iostream>
+#include <string.h>
+
+using namespace std;
+
+struct fecha 
+{
+	int dia, mes, año;
+};
+
+struct anime
+{
+	string nombre;
+	int cant_caps;
+}; 
+
+struct persona
+{
+	string nombre;
+	anime anime_fav;
+	fecha fecha_nacimiento;
+};
+
+int main() 
+{
+	fecha f; anime a;
+	f.dia = 5; f.mes = 10; f.año = 2006;
+	a.nombre = "Sousei_No_Onmyouji";
+	a.cant_caps = 50;
+	persona p;
+	p.nombre = "Sebastian_Maldonado";
+	p.fecha_nacimiento = f;
+	p.anime_fav = a;
+
+  cout << "\t-----------------" << endl;
+  cout << "Nombre: " << p.nombre << endl;
+  cout << "Fecha de nacimiento: ";
+  cout << p.fecha_nacimiento.dia << "/";
+  cout << p.fecha_nacimiento.mes << "/";
+  cout << p.fecha_nacimiento.año << endl;
+  cout << "Anime favorito: " << p.anime_fav.nombre;
+  if (p.anime_fav.cant_caps > 100)
+  {
+    cout << " tiene mas de 100 capitulos!!";
+  } 
+  else
+  {
+    cout << " tiene " << p.anime_fav.cant_caps << " capitulos." << endl;
+  }
+}
+
+act_2.V2
+#include <iostream>
+#include <string.h>
+
+using namespace std;
+
+struct fecha 
+{
+	int dia, mes, año;
+};
+
+struct anime
+{
+	string nombre;
+	int cant_caps;
+}; 
+
+struct persona
+{
+	string nombre;
+	anime anime_fav;
+	fecha fecha_nacimiento;
+};
+
+int main() 
+{
+	fecha f; anime a;
+	cout << "Ingrese el DD-MM-AAAA: ";
+	cin >> f.dia; 
+	cin >> f.mes; 
+	cin >> f.año;
+	cout << "Ingrese el anime (sin espacio): ";
+	cin >> a.nombre;
+	cout << "Ingrese la cantidad de capitulos: ";
+	cin >> a.cant_caps;
+	persona p;
+	cout << "Ingrese nombre: ";
+	cin >> p.nombre;
+	p.fecha_nacimiento = f;
+	p.anime_fav = a;
+	
+	cout << "\t-----------------" << endl;
+	cout << "Nombre: " << p.nombre << endl;
+	cout << "Fecha de nacimiento: ";
+	cout << p.fecha_nacimiento.dia << "/";
+	cout << p.fecha_nacimiento.mes << "/";
+	cout << p.fecha_nacimiento.año << endl;
+	cout << "Anime favorito: " << p.anime_fav.nombre;
+	if (p.anime_fav.cant_caps > 100)
+	{
+		cout << " tiene mas de 100 capitulos!!";
+	}
+	else
+	{
+		cout << " tiene " << p.anime_fav.cant_caps << " capitulos." << endl;
+	}
+}
+
+act_2.V3
+#include <iostream>
+#include <string.h>
+
+using namespace std;
+
+struct fecha {
+	int dia, mes, año;
+};
+
+struct anime {
+	string nombre;
+	int cant_caps;
+}; 
+
+struct persona {
+	string nombre;
+	anime anime_fav;
+	fecha fecha_nacimiento;
+};
+
+int main() {
+	fecha f; anime a;
+	persona e[3];
+	for (int i = 0; i < 3; i++) {
+		cout << "Ingrese el DD-MM-AAAA: ";
+		cin >> f.dia; cin >> f.mes; cin >> f.año;
+		cout << "Ingrese el anime (sin espacio): ";
+		cin >> a.nombre;
+		cout << "Ingrese la cantidad de capitulos: ";
+		cin >> a.cant_caps;
+		cout << "Ingrese nombre: ";
+		cin >> e[i].nombre;
+		e[i].fecha_nacimiento = f;
+		e[i].anime_fav = a;
+		system("cls");
+	}
+	for (int i = 0; i < 3; i++) {
+		cout << "\t-----------------" << endl;
+		cout << "Nombre: " << e[i].nombre << endl;
+		cout << "Fecha de nacimiento: ";
+		cout << e[i].fecha_nacimiento.dia << "/";
+		cout << e[i].fecha_nacimiento.mes << "/";
+		cout << e[i].fecha_nacimiento.año << endl;
+		cout << "Anime favorito: " << e[i].anime_fav.nombre;
+		if (e[i].anime_fav.cant_caps > 100) {
+			cout << " tiene mas de 100 capitulos!!";
+		}
+		else {
+			cout << " tiene " << e[i].anime_fav.cant_caps << " capitulos." << endl;
+		}
+	}
+	cout << endl;
+}
+
+act_2.V4
+#include <iostream>
+#include <string.h>
+
+using namespace std;
+
+struct fecha 
+{
+	int dia, mes, año;
+};
+
+struct anime
+{
+	string nombre;
+	int cant_caps;
+}; 
+
+struct persona
+{
+	string nombre;
+	anime anime_fav;
+	fecha fecha_nacimiento;
+};
+
+int main() 
+{
+	fecha f; anime a;
+	persona e[3];
+
+	for (int i = 0; i < 3; i++)
+	{
+		cout << "Ingrese el DD-MM-AAAA: ";
+		cin >> f.dia; cin >> f.mes; cin >> f.año;
+		cout << "Ingrese el anime (sin espacio): ";
+		cin >> a.nombre;
+		cout << "Ingrese la cantidad de capitulos: ";
+		cin >> a.cant_caps;
+		cout << "Ingrese nombre: ";
+		cin >> e[i].nombre;
+		e[i].fecha_nacimiento = f;
+		e[i].anime_fav = a;
+		system("cls");
+		
+	}
+	
+	for (int i = 0; i < 3; i++)
+	{
+		if (e[i].anime_fav.nombre == "evangelion" || e[i].anime_fav.nombre == "Evangelion")
+		{
+			cout << "\t-----------------" << endl;
+			cout << "Nombre: " << e[i].nombre << endl;
+			cout << "Fecha de nacimiento: ";
+			cout << e[i].fecha_nacimiento.dia << "/";
+			cout << e[i].fecha_nacimiento.mes << "/";
+			cout << e[i].fecha_nacimiento.año << endl;
+			cout << "Anime favorito: " << e[i].anime_fav.nombre;
+			if (e[i].anime_fav.cant_caps > 100) {
+				cout << " tiene mas de 100 capitulos!!";
+			}
+			else {
+				cout << " tiene " << e[i].anime_fav.cant_caps << " capitulos." << endl;
+			}
+		}
+	cout << endl;	
+	}
+}

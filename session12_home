@@ -258,3 +258,60 @@ int main()
 	cout << endl;	
 	}
 }
+act_3
+#include <iostream>
+#include <string.h>
+
+using namespace std;
+
+struct persona
+{
+	string nombre;
+	int edad;
+	bool puede_votar() {
+		return edad >= 18;
+	}
+};
+
+void ImprimirInfoVotacion(persona e) {
+	if (e.puede_votar())
+		cout << "El estudiante " << e.nombre << " si puede votar";
+	else
+		cout << "El estudiante " << e.nombre << " no puede votar";
+}
+
+int main() {
+	persona e;
+	e.nombre = "A"; e.edad = 21;
+	ImprimirInfoVotacion(e);
+}
+act_3.V2
+#include <iostream>
+#include <string.h>
+
+using namespace std;
+
+struct persona
+{
+	string nombre;
+	int edad;
+	bool puede_votar() {
+		return edad >= 18;
+	}
+};
+
+void ImprimirInfoVotacion(persona e) {
+	if (e.puede_votar())
+		cout << "El estudiante " << e.nombre << " si puede votar";
+	else
+		cout << "El estudiante " << e.nombre << " no puede votar";
+}
+
+int main() {
+	persona e;
+	cout << "Ingrese nombre: "; cin >> e.nombre;
+	cout << "Ingrese edad: "; cin >> e.edad;
+	cout << endl;
+	ImprimirInfoVotacion(e);
+	cout << endl;
+}

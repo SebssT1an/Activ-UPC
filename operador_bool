@@ -1,0 +1,20 @@
+#include <iostream>
+#include <string.h>
+
+using namespace std;
+
+int main() {
+	int x; int resultado;
+	cout << "Ingrese el valor de x: "; cin >> x;
+	if (x >= 5)
+	{
+		resultado = x + 2;
+	}
+	else
+	{
+		2 * x - 6;
+	}
+	// es equivalente a...
+	resultado = (x >= 5) * (x + 2) + (x < 5) * (2 * x - 6);
+	cout << "El resultado es: " << resultado << endl;
+}

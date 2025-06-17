@@ -1,0 +1,62 @@
+#include <iostream>
+#include <string.h>
+
+using namespace std;
+
+struct persona
+{
+	string nombre;
+	int edad;
+	char gen_music;
+};
+
+int main() 
+{
+	persona p;
+
+	int cant_sals = 0;
+	int cant_regg = 0;
+	int	cant_cumb = 0;
+	int cant_otro = 0;
+
+	float edad_sals = 0;
+	float edad_regg = 0;
+	float edad_cumb = 0;
+	float edad_otro = 0;
+
+	for (int i = 0; i < 5; i++)
+	{
+		cout << "Ingrese su nombre: "; cin >> p.nombre;
+		cout << "Ingrese su edad: "; cin >> p.edad;
+		cout << "Ingrese su genero musical favorito:" << endl;
+		cout << "S -> Salsa" << endl << "R -> Reggaeton" << endl << "C -> Cumbia" << endl << "O -> Otros" << endl;
+		cin >> p.gen_music;
+		if (p.gen_music == 'S')
+		{
+			cant_sals += 1;
+			edad_sals += p.edad;
+		}
+		else if (p.gen_music=='R')
+		{
+			cant_regg += 1;
+			edad_regg += p.edad;
+		}
+		else if (p.gen_music == 'C')
+		{
+			cant_cumb += 1;
+			edad_cumb += p.edad;
+		}
+		else
+		{	
+			cant_otro += 1;
+			edad_otro += p.edad;
+		}
+		system("cls");
+	}
+	cout << "\t--------------------" << endl;
+	cout << "Edad promedio por genero: \n";
+	cout << "Salsa: " << edad_sals / cant_sals<<endl;
+	cout << "Reggaeton: " << edad_regg / cant_regg<<endl;
+	cout << "Cumbia: " << edad_cumb / cant_cumb<<endl;
+	cout << "Otros: " << edad_otro / cant_otro<<endl;
+}

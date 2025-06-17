@@ -315,3 +315,36 @@ int main() {
 	ImprimirInfoVotacion(e);
 	cout << endl;
 }
+
+act_3.V3
+#include <iostream>
+#include <string.h>
+#include "Codigo.h"
+
+using namespace std;
+
+struct persona
+{
+	string nombre;
+	int edad;
+};
+
+bool puede_votar(persona e) {
+		return e.edad >= 18;
+}
+
+int main() {
+	persona e[5];
+	for (int i = 0; i < 5; i++)
+	{
+		cout << "Ingrese nombre: "; cin >> e[i].nombre;
+		cout << "Ingrese edad: "; cin >> e[i].edad;
+	}
+	for (int i = 0; i < 5; i++)
+	{
+		if (puede_votar(e[i]))
+		{
+			cout << e[i].nombre << " puede votar!" << endl;
+		}
+	}
+}

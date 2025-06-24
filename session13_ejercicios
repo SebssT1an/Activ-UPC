@@ -1,0 +1,42 @@
+#include <iostream>
+#include <string.h>
+
+using namespace std;
+
+int main()
+{
+	string nombre, apellido, codigo;
+	int edad = 0;
+
+	string* p_nombre = &nombre;
+	string* p_apellido = &apellido;
+	string* p_codigo = &codigo;
+	int* p_edad = &edad;
+
+	cout << "Ingrese su nombre: ";cin >> nombre;
+	cout << "Ingrese su apellido: ";cin >> apellido;
+	cout << "Ingrese su edad: ";cin >> edad;
+	cout << "Ingrese su codigo de estudiante: ";cin >> codigo;
+
+	cout << "\n --------------------------";
+	cout << "\n   DIRECCIONES DE MEMORIA  \n";
+	cout << "\nVariable nombre: " << p_nombre;
+	cout << "\nVariable apellido: " << p_apellido;
+	cout << "\nVariable edad: " << p_edad;
+	cout << "\nVariable codigo: " << p_codigo << endl;
+}
+
+#include <iostream>
+#include <string.h>
+
+using namespace std;
+
+int main() 
+{
+	int n1, n2, suma, resta;
+	float prod, div, mod;
+
+	cout << "------------";
+	cout << "\n CALCULADORA ";
+	cout <<
+}

@@ -1,0 +1,98 @@
+#include <iostream>
+#include <string.h>
+
+using namespace std;
+
+int main() {
+	string* pUniversidad; // crear un puntero 
+	string universidad = "UPC"; // crear una variable
+	pUniversidad = &universidad; // el puntero apunte a la variable
+	cout << "El valor del puntero es: " << *pUniversidad;
+	cout << "\nLa direccion a la que apunta p es: " << pUniversidad;
+
+	return 0;
+}
+
+#include <iostream>
+#include <string.h>
+
+using namespace std;
+
+int main() {
+	int* numero = new int; // crear un numero con memoria dinamica
+	*numero = 24; // asignar un valor a ese numero
+	cout << "El valor del numero es: " << *numero; // acceder al numero con *
+	cout << "La direccion de memoria es: " << numero; // sin * mostrar la direccion de memoria
+	delete numero; // <-- eliminarlo de la RAM
+	return 0;
+}
+
+#include <iostream>
+#include <string.h>
+
+using namespace std;
+
+int main() {
+	int edades[5] = { 18, 17, 20, 21, 20 };
+	// arreglo de 5 enteros
+	int* d_edades = new int[5];
+	// arreglo dinamico de 5 enteros que se puede eliminar
+	delete d_edades;
+	// se puede eliminar
+}
+
+#include <iostream>
+#include <string.h>
+
+using namespace std;
+
+float promedio(int* edades, int cant) {
+	float p = 0;
+	for (int i = 0; i < cant; i++)
+	{
+		p += edades[i];
+	}
+	return p / cant;
+}
+
+int main() {
+	// solicitar 5 edades
+	int* edades = new int[5];
+	for (int i = 0; i < 5; i++)
+	{
+		// ingresar y guardar el valor de las edades
+		cout << "\n  Ingrese la edad " << i + 1 << " : ";
+		cin >> edades[i];
+	}
+	// mostrar el promedio de las edades 
+	cout << "\n  El promedio de las edades es : " << promedio(edades, 5) << "\n";
+	// eliminar la variable
+	delete[] edades;
+
+#include <iostream>
+#include <string.h>
+#include <locale.h>
+
+using namespace std;
+
+void modificar_soles(int v) {
+	// se hace una copia del valor
+	v = 50;
+	// lo que cambia es la copia
+}
+void modificar_soles2(int* v) {
+	// recibe la direccion de memoria
+	*v = 50;
+	// modificar el valor original
+}
+
+int main() 
+{
+	// otra aplicacion
+	int soles = 25;
+	int* psoles = &soles;
+	// modificar_soles(soles)
+	cout << soles;
+	modificar_soles2(psoles);
+	cout << "\n" << soles;
+}

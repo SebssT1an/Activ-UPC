@@ -1,0 +1,355 @@
+#include "pch.h" // animaciones
+#include <iostream> // imput output
+#include <string> // usar cadenas de texto
+#include <windows.h> // usar funciones de Windows
+#include <conio.h> // usar _getch() para capturar teclas
+#include <locale.h> // cambiar idioma de la consola
+#include <math.h> // usar funciones matemáticas
+
+using namespace System;
+using namespace std;
+// teclas wasd de movimiento
+#define ABAJO 115
+#define ARRIBA 119
+#define IZQUIERDA 97
+#define DERECHA 100
+#define ATAQUE 32
+
+void gotoxy(int x, int y)
+{
+	Console::SetCursorPosition(x, y);
+}
+void ventana()
+{
+	Console::SetWindowSize(120, 31);
+	Console::CursorVisible = false;
+}
+void Bienvenida(int& opcion)
+{
+	system("color B1");
+	gotoxy(12, 1);
+	cout << "███████ ███████  █████      ██████  ███████ ███████ ███████ ███    ██ ██████  ███████ ██████  " << endl;
+	gotoxy(12, 2);
+	cout << "██      ██      ██   ██     ██   ██ ██      ██      ██      ████   ██ ██   ██ ██      ██   ██ " << endl;
+	gotoxy(12, 3);
+	cout << "███████ █████   ███████     ██   ██ █████   █████   █████   ██ ██  ██ ██   ██ █████   ██████  " << endl;
+	gotoxy(12, 4);
+	cout << "     ██ ██      ██   ██     ██   ██ ██      ██      ██      ██  ██ ██ ██   ██ ██      ██   ██ " << endl;
+	gotoxy(12, 5);
+	cout << "███████ ███████ ██   ██     ██████  ███████ ██      ███████ ██   ████ ██████  ███████ ██   ██ " << endl;
+
+	gotoxy(15, 10);
+	cout << "1. Iniciar Juego";
+	gotoxy(15, 11);
+	cout << "2. Instrucciones";
+	gotoxy(15, 12);
+	cout << "3. Salir";
+	gotoxy(15, 14);
+	cout << "Seleccione una opcion: "; cin >> opcion;
+}
+void Instrucciones()
+{
+	system("cls");
+	Console::ForegroundColor = ConsoleColor::Green;
+	Console::BackgroundColor = ConsoleColor::Black;
+	Console::Clear();
+	gotoxy(5, 5);
+	cout << "\t\t----Instrucciones del Juego:----";
+	gotoxy(5, 6);
+	cout << "\t1. Usa las teclas W, A, S, D para moverte.";
+	gotoxy(5, 7);
+	cout << "\t2. Evita los enemigos y obstáculos.";
+	gotoxy(5, 8);
+	cout << "\t3. Completa las misiones para avanzar.";
+	gotoxy(5, 9);
+	cout << "\t4. Presiona ESC para salir del juego.";
+	gotoxy(5, 11);
+	cout << "\tPresiona cualquier tecla para volver al menú principal...";
+	char keyPressed = _getch();
+}
+void titulo_escenario_1()
+{
+	system("cls");
+	Console::ForegroundColor = ConsoleColor::Black;
+	gotoxy(12, 1);
+	cout << "NIVEL 1";
+	gotoxy(12, 2);
+	cout << " ____  _____ _____ _____ _____ _____ _____ __ __ ";
+	gotoxy(12, 3);
+	cout << "|    \\|   __| __  | __  |  _  |     |   __|  |  |";
+	gotoxy(12, 4);
+	cout << "|  |  |   __|    -|    -|     | | | |   __|-   -|";
+	gotoxy(12, 5);
+	cout << "|____/|_____|__|__|__|__|__|__|_|_|_|_____|__|__|";
+
+	Sleep(1500);
+}
+void titulo_escenario_2()
+{
+	system("cls");
+	Console::ForegroundColor = ConsoleColor::Black;
+	gotoxy(12, 1);
+	cout << "NIVEL 2";
+	gotoxy(12, 2);
+	cout << " __    _____ _____ _____ __ __ _____ _____ ";
+	gotoxy(12, 3);
+	cout << "|  |  |     | __  | __  |  |  |  |  |   __|";
+	gotoxy(12, 4);
+	cout << "|  |__|  |  | __ -| __ -|_   _|  |  |__   |";
+	gotoxy(12, 5);
+	cout << "|_____|_____|_____|_____| |_| |_____|_____|";
+
+	Sleep(1500);
+}
+void titulo_escenario_3()
+{
+	system("cls");
+	Console::ForegroundColor = ConsoleColor::Black;
+	gotoxy(12, 1);
+	cout << "NIVEL 3";
+	gotoxy(12, 2);
+	cout << " _____ _____ _____ _____ __ __ ";
+	gotoxy(12, 3);
+	cout << "|   __|  |  |   __|  _  |  |  |";
+	gotoxy(12, 4);
+	cout << "|   __|  |  |  |  |     |-   -|";
+	gotoxy(12, 5);
+	cout << "|__|  |_____|_____|__|__|__|__|";
+
+	Sleep(1500);
+}
+void personaje(int x, int y) {
+	Console::ForegroundColor = ConsoleColor::DarkGreen;
+	gotoxy(x, y); cout << " O ";
+	Console::ForegroundColor = ConsoleColor::Black;
+	gotoxy(x, y + 1); cout << "/|\\";
+	Console::ForegroundColor = ConsoleColor::Black;
+	gotoxy(x, y + 2); cout << "/ \\";
+}
+void borrar(int x, int y)
+{
+	gotoxy(x, y); cout << "   ";
+	gotoxy(x, y + 1); cout << "   ";
+	gotoxy(x, y + 2); cout << "   ";
+}
+void DERRAMEX(int x, int y) {
+	Console::ForegroundColor = ConsoleColor::DarkRed;
+	gotoxy(x, y); cout << " _^^^_";
+	gotoxy(x, y + 1); cout << "(O_o_O)";
+	gotoxy(x, y + 2); cout << " \\|||/ ";
+	gotoxy(x, y + 3); cout << " /|||\\";
+	gotoxy(x, y + 4); cout << "  ||| ";
+	gotoxy(x, y + 5); cout << " /   \\";
+}
+void LOBBYUS(int x, int y) {
+	Console::ForegroundColor = ConsoleColor::DarkRed;
+	gotoxy(x, y); cout << " __$$_";
+	gotoxy(x, y + 1); cout << "|$__$_|";
+	gotoxy(x, y + 2); cout << "|_$$__|";
+	gotoxy(x, y + 3); cout << "|$__$$|";
+	gotoxy(x, y + 4); cout << "|_||__|";
+	gotoxy(x, y + 5); cout << " \\__/  ";
+}
+void FUGAX(int x, int y) {
+	Console::ForegroundColor = ConsoleColor::DarkRed;
+	gotoxy(x, y); cout << "  ()  ";
+	gotoxy(x, y + 1); cout << " /@@\\ ";
+	gotoxy(x, y + 2); cout << "/ || \\";
+	gotoxy(x, y + 3); cout << " \\||/ ";
+	gotoxy(x, y + 4); cout << " /  \\ ";
+	gotoxy(x, y + 5); cout << " \\__/ ";
+}
+void barraVida(string nombre, int vida, int x, int y) {
+	gotoxy(x, y); cout << nombre << " VIDA: [";
+	for (int i = 0; i < vida; i++) cout << "#";
+	for (int i = vida; i < 10; i++) cout << "-";
+	cout << "]";
+}
+void borrarJefe(int x, int y) {
+	for (int i = 0; i < 6; i++) {
+		gotoxy(x, y + i); cout << "       ";
+	}
+}
+void proyectil(int x, int y) {
+	Console::ForegroundColor = ConsoleColor::White;
+	gotoxy(x, y); cout << "->";
+}
+void proyectilEnemigo(int x, int y) {
+	Console::ForegroundColor = ConsoleColor::Red;
+	gotoxy(x, y); cout << "<-";
+}
+void borrarProyectil(int x, int y) {
+	gotoxy(x, y); cout << "  ";
+}
+void combate(int nivel) {
+	int px = 5, py = 15, vidaJ = 10, vidaJefe = 10;
+	int jefeX = 90, jefeY = 15;
+	int direccion = -1;
+	int bulletX = -1, bulletY = -1;
+	int bulletJefeX = -1, bulletJefeY = -1;
+	int delayDisparoJefe = 0;
+	while (vidaJ > 0 && vidaJefe > 0) {
+		borrar(px, py);
+		borrarJefe(jefeX, jefeY);
+		if (bulletX != -1) borrarProyectil(bulletX, bulletY);
+		if (bulletJefeX != -1) borrarProyectil(bulletJefeX, bulletJefeY);
+
+		if (_kbhit()) {
+			char k = _getch();
+			if (k == ARRIBA && py > 1) py--;
+			if (k == ABAJO && py + 2 < 29) py++;
+			if (k == IZQUIERDA && px > 1) px--;
+			if (k == DERECHA && px + 2 < 118) px++;
+			if (k == ATAQUE && bulletX == -1) {
+				bulletX = px + 3;
+				bulletY = py + 1;
+			}
+		}
+
+		if (bulletX != -1) {
+			bulletX++;
+			if (bulletX >= 118) {
+				bulletX = -1;
+			}
+			else if (bulletX >= jefeX && bulletY >= jefeY && bulletY <= jefeY + 5) {
+				vidaJefe--;
+				bulletX = -1;
+			}
+		}
+
+		if (bulletJefeX != -1) {
+			bulletJefeX--;
+			// Solo procesar colisión si la flecha está dentro del área visible
+			if (bulletJefeX > 0 && bulletJefeX <= 118) {
+				if (bulletJefeX >= px && bulletJefeX <= px + 2 && bulletJefeY >= py && bulletJefeY <= py + 2) {
+					vidaJ--;
+					bulletJefeX = -1;
+				}
+			} else if (bulletJefeX <= 0) {
+				bulletJefeX = -1;
+			}
+		}
+
+		delayDisparoJefe++;
+		if ((nivel == 1 && delayDisparoJefe >= 30) ||
+			(nivel == 2 && delayDisparoJefe >= 20) ||
+			(nivel == 3 && delayDisparoJefe >= 10)) {
+			if (bulletJefeX == -1) {
+				bulletJefeX = jefeX - 1;
+				bulletJefeY = jefeY + 2;
+			}
+			delayDisparoJefe = 0;
+		}
+
+		jefeX += direccion;
+		if (jefeX <= 60 || jefeX >= 110) direccion *= -1;
+
+		if (abs(px - jefeX) < 4 && abs(py - jefeY) < 5) vidaJ--;
+
+		personaje(px, py);
+		if (nivel == 1) DERRAMEX(jefeX, jefeY);
+		else if (nivel == 2) LOBBYUS(jefeX, jefeY);
+		else if (nivel == 3) FUGAX(jefeX, jefeY);
+		if (bulletX != -1) proyectil(bulletX, bulletY);
+		if (bulletJefeX != -1) proyectilEnemigo(bulletJefeX, bulletJefeY);
+
+		barraVida("Jugador", vidaJ, 2, 1);
+		barraVida("Jefe", vidaJefe, 85, 1);
+		Sleep(100);
+	}
+	system("cls");
+	if (vidaJ > 0) {
+		gotoxy(45, 10); cout << "JEFE DERROTADO!";
+		Sleep(1500);
+	}
+	else {
+		gotoxy(45, 10); cout << "HAS SIDO DERROTADO...";
+		Sleep(2000);
+		exit(0);
+	}
+}
+void Escenario_1()
+{
+	system("cls");
+	int alto = 30, ancho = 119;
+	for (int i = 0; i < alto; i++) {
+		gotoxy(0, 0 + i); cout << "# ";
+	}
+	for (int i = 0; i < ancho; i++) {
+		gotoxy(0 + i, 0); cout << "# ";
+	}
+	for (int i = 0; i < alto; i++) {
+		gotoxy(118, 0 + i); cout << "# ";
+	}
+	for (int i = 0; i < ancho; i++) {
+		gotoxy(0 + i, 29); cout << "# ";
+	}
+}
+void Escenario_2()
+{
+	system("cls");
+	int alto = 30, ancho = 119;
+	for (int i = 0; i < alto; i++) {
+		gotoxy(0, 0 + i); cout << "# ";
+	}
+	for (int i = 0; i < ancho; i++) {
+		gotoxy(0 + i, 0); cout << "# ";
+	}
+	for (int i = 0; i < alto; i++) {
+		gotoxy(118, 0 + i); cout << "# ";
+	}
+	for (int i = 0; i < ancho; i++) {
+		gotoxy(0 + i, 29); cout << "# ";
+	}
+}
+void Escenario_3()
+{
+	system("cls");
+	int alto = 30, ancho = 119;
+	for (int i = 0; i < alto; i++) {
+		gotoxy(0, 0 + i); cout << "# ";
+	}
+	for (int i = 0; i < ancho; i++) {
+		gotoxy(0 + i, 0); cout << "# ";
+	}
+	for (int i = 0; i < alto; i++) {
+		gotoxy(118, 0 + i); cout << "# ";
+	}
+	for (int i = 0; i < ancho; i++) {
+		gotoxy(0 + i, 29); cout << "# ";
+	}
+}
+int main()
+{
+	setlocale(LC_ALL, "Spanish");
+
+	ventana();
+	int opcion = 0;
+	do
+	{
+		system("cls");
+		Bienvenida(opcion);
+		if (opcion == 1)
+		{
+			int posxjugador = 5, posyjugador = 15;
+			titulo_escenario_1();
+			Escenario_1();
+			combate(1);
+			break; // salir del bucle para iniciar el juego
+		}
+		else if (opcion == 2)
+		{
+			Instrucciones();
+		}
+		else if (opcion == 3)
+		{
+			Console::ForegroundColor = ConsoleColor::Red;
+			Console::BackgroundColor = ConsoleColor::Black;
+			Console::Clear();
+			gotoxy(40, 10);
+			cout << "Saliendo del juego...";
+			Sleep(2000); // 2 segundos antes de cerrar
+		}
+	} while (opcion != 3); // repetir si no pone una de las 3 opciones
+	return 0;
+}

@@ -1,0 +1,49 @@
+#include <iostream>
+#include <string.h>
+#include <locale.h>
+
+using namespace std;
+
+struct Estudiante
+{
+	string nombre;
+	int edad;
+}e;
+void promedio_mayor(Estudiante* e, int N, float* p, int* m) {
+	float prom = 0;
+	int mayor = e[0].edad;
+	for (int i = 0; i < N; i++) {
+		prom += e[i].edad;
+		if (mayor < e[i].edad){
+			mayor = e[i].edad;
+		}
+	}
+	prom /= N;
+	*p = prom;
+	*m = mayor;
+}
+int main()
+{
+	int N;
+	cout << "Ingrese el numero de estudiantes: ";
+	cin >> N;
+	Estudiante* estudiantes = new Estudiante[N];
+
+	int edad_mayor = 0;
+	float edad_total = 0;
+
+	for (int i = 0; i < N; i++)
+	{
+		cout << "\nIngrese el nombre del estudiante " << i + 1 << ": ";
+		cin >> estudiantes[i].nombre;
+		cout << "Ingrese la edad del estudiante " << i + 1 << ": ";
+		cin >> estudiantes[i].edad;
+	}
+	int* mayor = new int;
+	float* promedio = new float;
+
+	promedio_mayor(estudiantes, N, promedio, mayor);
+
+	cout << "\nEl promedio es: " << *promedio;
+	cout << "\nEl mayor es: " << *mayor;
+}

@@ -1,0 +1,156 @@
+#include <iostream>
+#include <string.h>
+
+using namespace std;
+
+struct Partidos
+{
+	char equip_local;
+	char equip_visit;
+	int goles_local, goles_visit;
+};
+void gana_pierde(Partidos* p, char* gan, char* pierd) {
+	int goles_A = 0, goles_B = 0, goles_C = 0;
+	int gana_A = 0, gana_B = 0, gana_C = 0;
+	int pierde_A = 0, pierde_B = 0, pierde_C = 0;
+
+	char mayor_gana = 'A', mayor_pierde = 'B';
+	for (int i = 0; i < 3; i++)
+	{
+		if (p[i].equip_local='A')
+		{
+			goles_A += p[i].goles_local;
+		}
+		if (p[i].equip_visit = 'A')
+		{
+			goles_A += p[i].goles_visit;
+		}
+		if (p[i].equip_local = 'B')
+		{
+			goles_B += p[i].goles_local;
+		}
+		if (p[i].equip_visit = 'B')
+		{
+			goles_B += p[i].goles_visit;
+		}
+		if (p[i].equip_local = 'C')
+		{
+			goles_C += p[i].goles_local;
+		}
+		if (p[i].equip_visit = 'C')
+		{
+			goles_C += p[i].goles_visit;
+		}
+	}
+	for (int i = 0; i < 3; i++)
+	{
+		if (p[i].equip_local = 'A') {
+			if (p[i].goles_local>p[i].goles_visit)
+			{
+				gana_A += 1;
+			}
+			else
+			{
+				pierde_A += 1;
+			}
+		}
+		if (p[i].equip_local = 'B') {
+			if (p[i].goles_local > p[i].goles_visit)
+			{
+				gana_B += 1;
+			}
+			else
+			{
+				pierde_B += 1;
+			}
+		}
+		if (p[i].equip_local = 'C') {
+			if (p[i].goles_local > p[i].goles_visit)
+			{
+				gana_C += 1;
+			}
+			else
+			{
+				pierde_C += 1;
+			}
+		}
+		if (p[i].equip_visit = 'A') {
+			if (p[i].goles_local < p[i].goles_visit)
+			{
+				gana_A += 1;
+			}
+			else
+			{
+				pierde_A += 1;
+			}
+		}
+		if (p[i].equip_visit = 'B') {
+			if (p[i].goles_local < p[i].goles_visit)
+			{
+				gana_B += 1;
+			}
+			else
+			{
+				pierde_B += 1;
+			}
+		}
+		if (p[i].equip_visit = 'C') {
+			if (p[i].goles_local < p[i].goles_visit)
+			{
+				gana_C += 1;
+			}
+			else
+			{
+				pierde_C += 1;
+			}
+		}
+	}
+
+	if (gana_A>gana_B && gana_A>gana_C)
+	{
+		mayor_gana = 'A';
+	}
+	if (gana_B>gana_A && gana_B>gana_C)
+	{
+		mayor_gana = 'B';
+	}
+	if (gana_C>gana_A && gana_C>gana_A)
+	{
+		mayor_gana = 'C';
+	}
+	if (gana_A < gana_B && gana_A < gana_C)
+	{
+		mayor_pierde = 'A';
+	}
+	if (gana_B < gana_A && gana_B < gana_C)
+	{
+		mayor_pierde = 'B';
+	}
+	if (gana_C < gana_A && gana_C < gana_A)
+	{
+		mayor_pierde = 'C';
+	}
+
+	*gan = mayor_gana;
+	*pierd = mayor_pierde;
+}
+int main() {
+	Partidos* partido = new Partidos[3];
+
+	for (int i = 0; i < 3; i++)
+	{
+		cout << "\n--Partido #" << i + 1 << " --" << endl;
+		cout << "Ingrese el equipo local (en mayusculas): "; cin >> partido[i].equip_local;
+		cout << "Ingrese el equipo visitante (en mayusculas): "; cin >> partido[i].equip_visit;
+		cout << "Goles del equipo local: "; cin >> partido[i].goles_local;
+		cout << "Goles del equipo visitante: "; cin >> partido[i].goles_visit;
+	}
+
+	char* gana = new char;
+	char* pierde = new char;
+
+	gana_pierde(partido, gana, pierde);
+
+	cout << "El equipo que gano mas partidos fue: " << *gana;
+	cout << "El equipo que perdio mas partidos fue: " << *pierde;
+}

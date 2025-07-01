@@ -1,0 +1,44 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	int *numero = new int;
+	//crear la variable
+	//en memoria dinamica
+	//crear un puntero a un entero y llamarlo numero
+	*numero = 5; //<- asignarle un valor
+	cout << "El valor del numero es: " << *numero;
+	//mostramos el valor
+	cout << "\nSu direccion es: " << numero;
+	//la direcccion de memoria a la que apunta
+	delete numero;
+	//eliminamos la referencia
+
+	int *numero = new int;
+	if (numero == NULL)
+	{
+		cout << "No se pudo inicializar la variable :'c";
+	}
+	else
+	{
+		cout<<"Se pudo inicializar ;D";
+	}
+
+	int *numero; // <- declarar el puntero
+	numero = new int; // <- asignar un espacio en memoria dinamica
+					  // <- en memoria dinamica
+	*numero = 5; // <- asignarle un valor en espacio de
+				 // memoria dinamica
+	delete numero; // <- elimino la asignacion del valor
+				   // <- en memoria dinamica
+
+  int N;
+  cout << "Ingrese la cantidad de estudiantes: ";
+  cin >> N; // N es una variable
+
+  int notas_estudiantes[N]; // estatica
+
+  int* notas_est_dinamica;
+  notas_est_dinamica = new int[N]; // dinamica

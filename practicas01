@@ -1,0 +1,39 @@
+#include "pch.h"
+#include <iostream>
+#include <ctime>
+#include <string>
+
+using namespace System;
+using namespace std;
+
+struct persona {
+	int edad = 0;
+	int valor = 0;
+};
+
+void arreglo_datos(int tamaño, persona* dat_pers) {
+	for (int i = 0; i < tamaño; i++) {
+		cout << "\n----------------------";
+		cout << "\nIngrese su edad: "; cin >> dat_pers[i].edad;
+		dat_pers[i].valor = i + 1;
+	}
+}
+
+int MayorEdad(int tamaño, persona* dat_pers) {
+	int edadmax = 0, valormax = 0;
+	for (int i = 0; i < tamaño; i++) {
+		if (dat_pers[i].edad > edadmax) {
+			edadmax = dat_pers[i].edad;
+		}
+	}
+	return edadmax;
+}
+
+int main() {
+	int tamaño;
+	cout << "Ingrese el tamaño del arreglo: "; cin >> tamaño;
+	persona* dat_pers = new persona[tamaño];
+	arreglo_datos(tamaño, dat_pers);
+	MayorEdad(tamaño, dat_pers);
+	return 0;
+}
